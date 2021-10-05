@@ -1,11 +1,18 @@
 import { StrictMode } from 'react'
 import ReactDOM from 'react-dom'
+import dotenv from 'dotenv'
+import { ApolloProvider } from '@apollo/client'
+import graphqlClient from 'utils/GraphqlClient'
 import App from './App'
 import reportWebVitals from './reportWebVitals'
 
+dotenv.config()
+
 ReactDOM.render(
   <StrictMode>
-    <App />
+    <ApolloProvider client={graphqlClient}>
+      <App />
+    </ApolloProvider>
   </StrictMode>,
   document.getElementById('root')
 )
