@@ -1,3 +1,16 @@
+# 1.0.0 (2021-10-06)
+
+
+### Bug Fixes
+
+* **env:** fix api url ([37022e6](https://github.com/dijalmasilva/dialog-pwa-test-ui/commit/37022e667f010b5d77f533f7adc6bec2641d7846))
+
+
+### Features
+
+* **mvp:** create front requisites ([68cab3f](https://github.com/dijalmasilva/dialog-pwa-test-ui/commit/68cab3f709d64fdbea3cefa53d7a9c7535d4ef72))
+* **perfomance:** refac some parts and make some performances ([f102924](https://github.com/dijalmasilva/dialog-pwa-test-ui/commit/f10292430d55b693f3fedb6db2858c909e4dc782))
+
 # 1.0.0 (2021-09-10)
 
 
