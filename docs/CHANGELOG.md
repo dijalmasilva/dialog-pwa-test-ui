@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/dijalmasilva/dialog-pwa-test-ui/compare/v1.0.0...v1.0.1) (2021-10-06)
+
+
+### Bug Fixes
+
+* **readme:** fix images and mentions text ([47cb149](https://github.com/dijalmasilva/dialog-pwa-test-ui/commit/47cb14936faaacf5e8a7c2c9ef09283ab826f484))
+
 # 1.0.0 (2021-10-06)
 
 
