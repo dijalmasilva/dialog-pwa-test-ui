@@ -66,10 +66,10 @@ Deverá executar com `yarn start` na porta 4000
 ## Descrição do React/PWA
 
 ### Tela Inicial
-![tela_incial](./docs/browser02.png)
+![tela_incial](https://raw.githubusercontent.com/criticalmassbr/dialog-pwa-test/master/docs/browser02.png)
 
 ### Tela detalhe de amigos
-![tela_detalhe_amigos](./docs/browser03.png)
+![tela_detalhe_amigos](https://raw.githubusercontent.com/criticalmassbr/dialog-pwa-test/master/docs/browser03.png)
 
 
 ### Stack:
@@ -94,6 +94,6 @@ Deverá executar com `yarn start` na porta 3000
 
 ### Anotações que valem menção colocar aqui:
 
-Este projeto utiliza o Github-Actions para rodar testes, o build do projeto e para
-versionamento e criação/atualização de CHANGELOG através do [Semantic-Release](https://semantic-release.gitbook.io/semantic-release/),
+Este projeto utiliza o Github-Actions para rodar testes, o build do projeto e rodar o [Semantic-Release](https://semantic-release.gitbook.io/semantic-release/).
+Este serve para versionamento, criação/atualização de CHANGELOG,  criação de tags, releases e pre-releases,
 onde ainda é possivel realizar a publicação de pacotes NPM caso haja a necessidade.
