@@ -93,4 +93,7 @@ Deverá executar com `yarn start` na porta 3000
 
 
 ### Anotações que valem menção colocar aqui:
-...
+
+Este projeto utiliza o Github-Actions para rodar testes, o build do projeto e para
+versionamento e criação/atualização de CHANGELOG através do [Semantic-Release](https://semantic-release.gitbook.io/semantic-release/),
+onde ainda é possivel realizar a publicação de pacotes NPM caso haja a necessidade.
