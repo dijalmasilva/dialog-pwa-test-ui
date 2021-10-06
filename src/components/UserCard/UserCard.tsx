@@ -1,18 +1,15 @@
 import { SimpleUser } from 'types/SimpleUser'
 import { Box, Image, VStack } from '@chakra-ui/react'
 import TextInfo from 'components/TextInfo'
-import { useHistory } from 'react-router-dom'
+import { memo } from 'react'
+import useHistoryUser from 'hooks/useHistoryUser'
 
 type UserCardProps = {
   simpleUser: SimpleUser
 }
 
-export default function UserCard({ simpleUser }: UserCardProps) {
-  const history = useHistory()
-
-  const seeUserDetails = () => {
-    history.push(`/users/${simpleUser._id}`)
-  }
+function UserCard({ simpleUser }: UserCardProps) {
+  const seeUserDetails = useHistoryUser(simpleUser._id)
 
   return (
     <VStack
@@ -39,3 +36,5 @@ export default function UserCard({ simpleUser }: UserCardProps) {
     </VStack>
   )
 }
+
+export default memo(UserCard)

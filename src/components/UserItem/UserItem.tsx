@@ -1,18 +1,14 @@
 import { Box, Image, Text } from '@chakra-ui/react'
 import { SimpleUser } from 'types/SimpleUser'
-import { GrReturn } from 'react-icons/all'
-import { useHistory } from 'react-router-dom'
+import { GrReturn } from 'react-icons/gr'
+import useHistoryUser from 'hooks/useHistoryUser'
 
 type UserItemProps = {
   user: SimpleUser
 }
 
 export default function UserItem({ user }: UserItemProps) {
-  const history = useHistory()
-
-  const seeUserDetails = () => {
-    history.push(`/users/${user._id}`)
-  }
+  const seeUserDetails = useHistoryUser(user._id)
 
   return (
     <Box

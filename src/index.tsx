@@ -3,8 +3,11 @@ import ReactDOM from 'react-dom'
 import dotenv from 'dotenv'
 import { ApolloProvider } from '@apollo/client'
 import graphqlClient from 'utils/GraphqlClient'
+import registerServiceWorker from 'serviceWorker'
 import App from './App'
 import reportWebVitals from './reportWebVitals'
+
+registerServiceWorker()
 
 dotenv.config()
 

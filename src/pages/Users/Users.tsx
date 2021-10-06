@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react'
 import UserService from 'services/UserService'
 import { SimpleUser } from 'types/SimpleUser'
+import MainLayout from 'layouts/MainLayout'
 import UserCard from 'components/UserCard'
 import { SimpleGrid } from '@chakra-ui/react'
-import MainLayout from 'layouts/MainLayout'
 
 export default function Users() {
   const [users, setUsers] = useState<SimpleUser[]>([])

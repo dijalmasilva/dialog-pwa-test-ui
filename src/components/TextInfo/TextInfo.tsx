@@ -2,7 +2,7 @@ import { Text } from '@chakra-ui/react'
 
 type TextInfoProps = {
   label: string
-  value: string | number
+  value: string | number | undefined
 }
 
 export default function TextInfo({ label, value }: TextInfoProps) {
@@ -10,7 +10,7 @@ export default function TextInfo({ label, value }: TextInfoProps) {
     <Text fontSize="lg" fontWeight="bold">
       {label}:{' '}
       <Text as="span" fontWeight="300">
-        {value}
+        {value || ' - '}
       </Text>
     </Text>
   )

@@ -1,52 +1,31 @@
-import { useParams } from 'react-router-dom'
-import { useEffect, useState } from 'react'
-import UserService from 'services/UserService'
-import { User } from 'types/User'
 import MainLayout from 'layouts/MainLayout'
-import {
-  Box,
-  Center,
-  Image,
-  SimpleGrid,
-  Text,
-  useBoolean,
-} from '@chakra-ui/react'
+import { Box, Button, Center, Image, SimpleGrid, Text } from '@chakra-ui/react'
 import TextInfo from 'components/TextInfo'
 import UserCard from 'components/UserCard'
+import useUserDetails, {
+  UseDetailsStatus,
+} from 'pages/UserDetails/useUserDetails'
+import { useHistory } from 'react-router-dom'
 
 export default function UserDetails() {
-  const params = useParams() as { id: string }
-  const { id } = params
-  const [loading, setLoading] = useBoolean(true)
-  const [user, setUser] = useState<User | undefined>(undefined)
+  const { user, status } = useUserDetails()
+  const history = useHistory()
 
-  useEffect(() => {
-    if (id) {
-      setLoading.on()
-      UserService.findById(id)
-        .then(res => {
-          setUser(res.data.user)
-          setLoading.off()
-        })
-        .catch(() => {
-          setLoading.off()
-          setUser(undefined)
-        })
-    }
-  }, [id])
-
-  if (loading) {
+  if (status === UseDetailsStatus.LOADING) {
     return (
       <Center minH="80vh">
-        <Text>Loading user details...</Text>
+        <Text fontSize="2xl">Loading user details...</Text>
       </Center>
     )
   }
 
-  if (!user) {
+  if (status === UseDetailsStatus.NOT_FOUND) {
     return (
       <Center minH="80vh">
-        <Text>User not found!</Text>
+        <Box textAlign="center">
+          <Text fontSize="2xl">User not found!</Text>
+          <Button onClick={() => history.goBack()}>Go back</Button>
+        </Box>
       </Center>
     )
   }
@@ -55,11 +34,11 @@ export default function UserDetails() {
     <MainLayout>
       <Box p={8}>
         <Box display="flex" gridGap={4} alignItems="center">
-          <Image src={user.picture} alt={user.name} />
+          <Image src={user?.picture} alt={user?.name} />
           <Box display="flex" flexDir="column">
-            <TextInfo label="name" value={user.name} />
-            <TextInfo label="age" value={user.age} />
-            <TextInfo label="email" value={user.email} />
+            <TextInfo label="name" value={user?.name} />
+            <TextInfo label="age" value={user?.age} />
+            <TextInfo label="email" value={user?.email} />
           </Box>
         </Box>
         <br />
@@ -72,8 +51,8 @@ export default function UserDetails() {
           rounded="lg"
           color="white"
         >
-          {user.friends.map(user => (
-            <UserCard key={user.name} simpleUser={user} />
+          {user?.friends.map(u => (
+            <UserCard key={u.name} simpleUser={u} />
           ))}
         </SimpleGrid>
       </Box>

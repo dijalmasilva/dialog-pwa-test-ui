@@ -1,13 +1,9 @@
 import { Box, Text } from '@chakra-ui/react'
 import SearchBar from 'components/SearchBar'
-import { useHistory } from 'react-router-dom'
+import useHistoryUsers from 'components/Header/useHistoryUsers'
 
 export default function Header() {
-  const history = useHistory()
-
-  const goToHome = () => {
-    history.push(`/users`)
-  }
+  const goToHome = useHistoryUsers()
 
   return (
     <Box

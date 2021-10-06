@@ -9,35 +9,21 @@ import {
   InputLeftElement,
   Kbd,
   Text,
-  useBoolean,
 } from '@chakra-ui/react'
-import { useEffect, useState } from 'react'
-import { FaSearch, IoClose } from 'react-icons/all'
-import { SimpleUser } from 'types/SimpleUser'
+import { FaSearch } from 'react-icons/fa'
+import { IoClose } from 'react-icons/io5'
 import UserItem from 'components/UserItem'
-import UserService from 'services/UserService'
+import useSearchBar from 'components/SearchBar/useSearchBar'
 
 export default function SearchBar() {
-  const [users, setUsers] = useState<SimpleUser[]>([])
-  const [showSearch, setShowSearch] = useBoolean()
-  const [name, setName] = useState<string>('')
-
-  const onKeyUp = (ev: any) => {
-    if (ev.keyCode === 27) {
-      setShowSearch.off()
-      setUsers([])
-    }
-  }
-
-  useEffect(() => {
-    if (name) {
-      UserService.findUsers(name).then(res => {
-        setUsers(res.data.list)
-      })
-    } else {
-      setUsers([])
-    }
-  }, [name])
+  const {
+    showSearch,
+    users,
+    setShowSearch,
+    name,
+    onChangeName,
+    onKeyUpToClose,
+  } = useSearchBar()
 
   if (showSearch) {
     return (
@@ -77,13 +63,13 @@ export default function SearchBar() {
               <FaSearch />
             </InputLeftElement>
             <Input
-              onKeyDown={onKeyUp}
+              onKeyDown={onKeyUpToClose}
               autoFocus
               border={0}
               focusBorderColor="none"
               value={name}
               name="search"
-              onChange={e => setName(e.target.value)}
+              onChange={e => onChangeName(e.target.value)}
               placeholder="Search the users by name"
             />
           </InputGroup>
